@@ -26,6 +26,7 @@ import { MoreHorizontal, PlusCircle, User2 } from "lucide-react";
 import Link from "next/link";
 import prisma from "@/app/lib/db";
 import Image from "next/image";
+import { unstable_noStore as noStore } from "next/cache";
 
 // Get Data from Server and propagate Table with imported Data
 async function getData() {
@@ -36,6 +37,7 @@ async function getData() {
 }
 
 export default async function BannerRoute() {
+  noStore();
   const data = await getData();
   return (
     <>

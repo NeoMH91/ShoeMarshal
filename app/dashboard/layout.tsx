@@ -21,7 +21,7 @@ export default async function DashboardLayout({
 }: {
   children: ReactNode;
 }) {
-  // noStore();
+  noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 

@@ -13,6 +13,7 @@ import { DollarSign, PartyPopper, ShoppingBag, User2 } from "lucide-react";
 import React from "react";
 import { Chart } from "../components/dashboard/Chart";
 import prisma from "../lib/db";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getData() {
   const now = new Date();
@@ -41,6 +42,7 @@ async function getData() {
 }
 
 export default async function Dashboard() {
+  noStore();
   const data = await getData();
   return (
     <>

@@ -2,6 +2,7 @@ import prisma from "@/app/lib/db";
 import React from "react";
 import { LoadingProductCard, ProductCard } from "./ProductCard";
 import { Suspense } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getData() {
   // await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -25,6 +26,8 @@ async function getData() {
   return data;
 }
 export function FeaturedProducts() {
+  noStore();
+
   return (
     <>
       <h2 className="text-2xl font-extrabold tracking-tight">Featured Items</h2>
