@@ -1,10 +1,10 @@
 import prisma from "@/app/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
-// import { unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function GET() {
-  // noStore();
+  noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
@@ -31,11 +31,9 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect("http://localhost:3000/");
-
-  // return NextResponse.redirect(
-  //   process.env.NODE_ENV === "development"
-  //     ? "http://localhost:3000/"
-  //     : "https://shoe-marshal.vercel.app/"
-  // );
+  return NextResponse.redirect(
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/"
+      : "https://shoe-marshal.vercel.app/"
+  );
 }
